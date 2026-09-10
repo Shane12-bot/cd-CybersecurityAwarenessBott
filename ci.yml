@@ -1,26 +1,9 @@
-name: Build and Check
+## GitHub Actions
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+This project uses GitHub Actions for continuous integration (CI). The workflow automatically restores the project dependencies and builds the application whenever changes are pushed to the repository.
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+The workflow is located in:
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+`.github/workflows/ci.yml`
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build project
-        run: dotnet build --no-restore --configuration Release
+A successful workflow run is indicated by a green check mark in GitHub Actions.
