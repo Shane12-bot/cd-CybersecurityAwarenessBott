@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Media;
 
@@ -15,16 +14,19 @@ namespace cd_CybersecurityAwarenessBott.service
                 "welcome.wav"
             );
 
-            if (File.Exists(audioPath))
+            if (!File.Exists(audioPath))
+            {
+                return;
+            }
+
+            try
             {
                 using SoundPlayer player = new SoundPlayer(audioPath);
-                player.PlaySync();
+                player.Play();
             }
-            else
+            catch
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Voice greeting could not be found.");
-                Console.ResetColor();
+                // The chatbot can continue working even if audio cannot be played.
             }
         }
     }

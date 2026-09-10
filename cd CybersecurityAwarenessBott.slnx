@@ -6,5 +6,6 @@
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
+  <Project Path="../CybersecurityAwarenessBot.GUI/CybersecurityAwarenessBot.GUI.csproj" Id="d2d6067b-3fe3-4db4-8c95-980eed7878b9" />
   <Project Path="CybersecurityAwarenessBott.csproj" />
 </Solution>

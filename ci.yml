@@ -1,9 +1,77 @@
+# Cybersecurity Awareness Bot
+
+## Project Description
+
+The Cybersecurity Awareness Bot is a C# console application designed to help South African citizens learn about basic cybersecurity and how to stay safe online.
+
+The chatbot provides information about password safety, phishing, suspicious links, and safe browsing. It also provides a personalised interaction by asking the user for their name.
+
+## Features
+
+- Voice greeting using a WAV audio file
+- ASCII cybersecurity logo
+- Personalised user interaction
+- Password safety information
+- Phishing awareness
+- Suspicious link awareness
+- Safe browsing guidance
+- Input validation
+- Coloured console interface
+- Typing effect for chatbot responses
+- Exit option
+
+## How to Run the Application
+
+1. Clone or download the repository.
+2. Open the project in Visual Studio.
+3. Make sure the `welcome.wav` file is inside the `Audio` folder.
+4. Build the project.
+5. Run the application.
+6. Enter your name when prompted.
+7. Ask the chatbot a cybersecurity question.
+8. Type `exit` to close the application.
+
+## Example Questions
+
+The user can ask questions such as:
+
+- How are you?
+- What is your purpose?
+- What can I ask you about?
+- How can I create a safe password?
+- What is phishing?
+- How do I identify a suspicious link?
+- How can I browse safely?
+
+## Technologies Used
+
+- C#
+- .NET
+- Visual Studio
+- System.Media
+- GitHub
+- GitHub Actions
+
+## Project Structure
+
+- `Program.cs` - Starts and controls the chatbot.
+- `AudioService.cs` - Plays the voice greeting.
+- `ChatbotService.cs` - Processes questions and provides responses.
+- `ConsoleUI.cs` - Controls the console design and typing effect.
+- `UserProfile.cs` - Stores the user's name.
+- `Audio/welcome.wav` - Voice greeting audio file.
+- `.github/workflows/ci.yml` - GitHub Actions build workflow.
+
 ## GitHub Actions
 
-This project uses GitHub Actions for continuous integration (CI). The workflow automatically restores the project dependencies and builds the application whenever changes are pushed to the repository.
+GitHub Actions is used to automatically restore dependencies and build the application when changes are pushed to the repository.
 
-The workflow is located in:
+The workflow is located at:
 
 `.github/workflows/ci.yml`
 
-A successful workflow run is indicated by a green check mark in GitHub Actions.
+A successful workflow run is shown by a green check mark in GitHub Actions.
+
+## Presentation
+
+YouTube presentation link: To be added.
