@@ -31,7 +31,7 @@ public class ChatbotService
 
         if (message.Contains("password"))
         {
-            return "Use a long and unique password for each important account. Avoid using easily guessed information such as your name or birthday.";
+            return "Use a long, unique password for each important account. Avoid using your name, birthday, or other easy-to-guess information. A password manager can also help you create and store strong passwords.";
         }
 
         if (message.Contains("phishing"))
