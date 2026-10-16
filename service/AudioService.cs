@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
+using System.Diagnostics;
 using System.IO;
-using System.Media;
 
-namespace cd_CybersecurityAwarenessBott.service
+namespace CybersecurityAwarenessBot.GUI.Services
 {
     public class AudioService
     {
@@ -11,22 +12,26 @@ namespace cd_CybersecurityAwarenessBott.service
             string audioPath = Path.Combine(
                 AppContext.BaseDirectory,
                 "Audio",
-                "welcome.wav"
-            );
+                "welcome.wav");
 
             if (!File.Exists(audioPath))
-            {
                 return;
-            }
 
             try
             {
-                using SoundPlayer player = new SoundPlayer(audioPath);
-                player.Play();
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "powershell.exe",
+                    Arguments = "-NoProfile -Command \"(New-Object System.Media.SoundPlayer '" +
+                                audioPath.Replace("'", "''") +
+                                "').PlaySync()\"",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                });
             }
             catch
             {
-                // The chatbot can continue working even if audio cannot be played.
+                // Continue running if audio playback is unavailable.
             }
         }
     }

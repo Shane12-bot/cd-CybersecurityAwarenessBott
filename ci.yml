@@ -1,77 +1,28 @@
-# Cybersecurity Awareness Bot
 
-## Project Description
+name: Build Cybersecurity Awareness Bot
 
-The Cybersecurity Awareness Bot is a C# console application designed to help South African citizens learn about basic cybersecurity and how to stay safe online.
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
 
-The chatbot provides information about password safety, phishing, suspicious links, and safe browsing. It also provides a personalised interaction by asking the user for their name.
+jobs:
+  build:
+    runs-on: windows-latest
 
-## Features
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-- Voice greeting using a WAV audio file
-- ASCII cybersecurity logo
-- Personalised user interaction
-- Password safety information
-- Phishing awareness
-- Suspicious link awareness
-- Safe browsing guidance
-- Input validation
-- Coloured console interface
-- Typing effect for chatbot responses
-- Exit option
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
 
-## How to Run the Application
+      - name: Restore dependencies
+        run: dotnet restore
 
-1. Clone or download the repository.
-2. Open the project in Visual Studio.
-3. Make sure the `welcome.wav` file is inside the `Audio` folder.
-4. Build the project.
-5. Run the application.
-6. Enter your name when prompted.
-7. Ask the chatbot a cybersecurity question.
-8. Type `exit` to close the application.
-
-## Example Questions
-
-The user can ask questions such as:
-
-- How are you?
-- What is your purpose?
-- What can I ask you about?
-- How can I create a safe password?
-- What is phishing?
-- How do I identify a suspicious link?
-- How can I browse safely?
-
-## Technologies Used
-
-- C#
-- .NET
-- Visual Studio
-- System.Media
-- GitHub
-- GitHub Actions
-
-## Project Structure
-
-- `Program.cs` - Starts and controls the chatbot.
-- `AudioService.cs` - Plays the voice greeting.
-- `ChatbotService.cs` - Processes questions and provides responses.
-- `ConsoleUI.cs` - Controls the console design and typing effect.
-- `UserProfile.cs` - Stores the user's name.
-- `Audio/welcome.wav` - Voice greeting audio file.
-- `.github/workflows/ci.yml` - GitHub Actions build workflow.
-
-## GitHub Actions
-
-GitHub Actions is used to automatically restore dependencies and build the application when changes are pushed to the repository.
-
-The workflow is located at:
-
-`.github/workflows/ci.yml`
-
-A successful workflow run is shown by a green check mark in GitHub Actions.
-
-## Presentation
-
-YouTube presentation link: To be added.
+      - name: Build solution
+        run: dotnet build --no-restore --configuration Release
